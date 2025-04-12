@@ -1,0 +1,151 @@
+<button onclick="location.href='home.html'">← Back to Home</button>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Justice Pathway Footer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+    }
+
+    footer {
+      background-color: #1F2937;
+      color: white;
+      padding: 3rem 1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer h4 {
+      font-family: serif;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .footer p,
+    .footer a {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .footer a:hover {
+      color: #FBBF24;
+      opacity: 1;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-icons svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      cursor: pointer;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      margin-top: 3rem;
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 0.875rem;
+      opacity: 0.7;
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-info span {
+      margin-top: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+            <span style="font-size: 1.25rem;">⚖️</span>
+            <span style="font-family: serif; font-size: 1.25rem; font-weight: bold;">Justice Pathway</span>
+          </div>
+          <p>Empowering individuals through legal education and guidance.</p>
+          <div class="social-icons" style="margin-top: 1rem;">
+            <a href="#"><svg viewBox="0 0 24 24"><path d="M22 12c0-5.523..."/></svg></a>
+            <a href="#"><svg viewBox="0 0 24 24"><path d="M8.29 20.251..."/></svg></a>
+            <a href="#"><svg viewBox="0 0 24 24"><path d="M20.447 20.452..."/></svg></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4>Quick Links</h4>
+          <p><a href="#">Home</a></p>
+          <p><a href="#">Ask a Question</a></p>
+          <p><a href="#">Knowledge Base</a></p>
+          <p><a href="#">Quizzes</a></p>
+          <p><a href="#">Contests</a></p>
+        </div>
+
+        <!-- Legal Categories -->
+        <div>
+          <h4>Legal Categories</h4>
+          <p><a href="#">Family Law</a></p>
+          <p><a href="#">Housing & Property</a></p>
+          <p><a href="#">Employment Law</a></p>
+          <p><a href="#">Immigration</a></p>
+          <p><a href="#">Criminal Defense</a></p>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4>Contact Us</h4>
+          <div class="contact-info"><span>📧</span><a href="mailto:info@justicepathway.com">info@justicepathway.com</a></div>
+          <div class="contact-info"><span>📞</span><a href="tel:+11234567890">(123) 456-7890</a></div>
+          <div class="contact-info"><span>📍</span><span>123 Legal Avenue<br/>Justice City, LA 10001</span></div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> Justice Pathway Hub. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+          <a href="#">Privacy Policy</a> |
+          <a href="#" style="margin-left: 0.75rem;">Terms of Service</a> |
+          <a href="#" style="margin-left: 0.75rem;">Disclaimer</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

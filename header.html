@@ -1,0 +1,172 @@
+<button onclick="location.href='home.html'">← Back to Home</button>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header - Justice Pathway</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --justice-primary: #1e3a8a;
+            --justice-secondary: #64748b;
+            --justice-muted: #e5e7eb;
+        }
+        
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+        
+        header {
+            border-bottom: 1px solid var(--justice-muted);
+        }
+        
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            color: var(--justice-primary);
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--justice-primary);
+            letter-spacing: -0.5px;
+        }
+        
+        nav {
+            display: none;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--justice-secondary);
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--justice-primary);
+        }
+        
+        .button-group {
+            display: none;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1.25rem;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-outline {
+            border: 1px solid var(--justice-primary);
+            color: var(--justice-primary);
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--justice-primary);
+            color: white;
+        }
+        
+        .btn-primary {
+            background-color: var(--justice-primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--justice-secondary);
+        }
+        
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .menu-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        @media (min-width: 768px) {
+            nav {
+                display: flex;
+                gap: 1.5rem;
+                align-items: center;
+            }
+            .button-group {
+                display: flex;
+                align-items: center;
+            }
+            .menu-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <!-- Scale Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v18m0 0H8m4 0h4M5 8h14M7 8c0 2.5-2 6-2 6s-2-3.5-2-6m14 0c0 2.5 2 6 2 6s2-3.5 2-6" />
+        </svg>
+                <span class="logo-text">Justice Pathway</span>
+            </div>
+
+            <nav>
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Ask for Help</a>
+                <a href="#" class="nav-link">Knowledge Base</a>
+                <a href="#" class="nav-link">Quizzes & Contests</a>
+            </nav>
+
+            <div class="button-group">
+                <button class="btn btn-outline">Log In</button>
+                <button class="btn btn-primary">Sign Up</button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="menu-btn" aria-label="Menu">
+        <!-- Gavel Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M14.121 14.121l1.415-1.415m-1.415 1.415a3 3 0 01-4.243 0m4.243 0L21 21m-9.879-6.879l-1.415 1.415m1.415-1.415a3 3 0 010-4.243m0 4.243L3 3" />
+        </svg>
+      </button>
+        </div>
+    </header>
+
+</body>
+
+</html>

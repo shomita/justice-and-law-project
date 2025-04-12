@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home - Justice Pathway</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f5f3eb; /* light brown */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #1f2937;
+    }
+
+    .home-box {
+      background-color: white;
+      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .home-box h1 {
+      margin-bottom: 0.5rem;
+      color: #1f2937;
+    }
+
+    .home-box p {
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+
+    .home-box button {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      background-color: #1e3a8a; /* blue */
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .home-box button:hover {
+      background-color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="home-box">
+    <h1>Welcome to Justice Pathway</h1>
+    <p>Select an option to get started:</p>
+
+    <button onclick="goTo('queform.html')">Ask a Legal Question</button>
+    <button onclick="goTo('knowledgebase.html')">Browse Knowledge Base</button>
+    <button onclick="goTo('legalquiz.html')">Take a Legal Quiz</button>
+    <button onclick="goTo('legalcontes.html')">Join Legal Contests</button>
+  </div>
+
+  <script>
+    function goTo(page) {
+      window.location.href = page;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<button onclick="location.href='home.html'">← Back to Home</button>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Knowledge Base</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    h2, h3 {
+      color: #1f2937;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      margin-bottom: 2rem;
+    }
+
+    .search-box {
+      position: relative;
+      margin: 0 auto 2rem;
+      max-width: 600px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 1rem 1rem 1rem 2.5rem;
+      font-size: 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+    }
+
+    .search-box svg {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      color: #9ca3af;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .articles {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .resources {
+      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .card .icon-circle {
+      background: #e0f2fe;
+      padding: 0.5rem;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
+    .card .icon-circle.purple { background: #ede9fe; }
+    .card .icon-circle.yellow { background: #fef3c7; }
+
+    .category {
+      color: #fbbf24;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .excerpt {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin: 1rem 0;
+    }
+
+    .link {
+      font-size: 0.9rem;
+      color: #1f2937;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .link:hover {
+      color: #6b7280;
+    }
+
+    .resource-icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 1rem;
+    }
+
+    .text-sm { font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+
+<section id="knowledge">
+  <div class="container">
+    <div class="text-center">
+      <h2>Legal Knowledge Base</h2>
+      <p class="subtitle">Access our library of articles and resources to better understand common legal issues.</p>
+    </div>
+
+    <!-- Search -->
+    <div class="search-box">
+      <input type="text" placeholder="Search for legal topics or questions..." />
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+    </div>
+
+    <!-- Articles -->
+    <div class="grid articles">
+      <div class="card">
+        <div class="flex">
+          <span class="icon-circle">
+            🏠
+          </span>
+          <div>
+            <div class="category">Housing</div>
+            <h3>Understanding Tenant Rights</h3>
+          </div>
+        </div>
+        <p class="excerpt">Learn about your rights as a tenant, including repairs, security deposits, and eviction processes.</p>
+        <a href="#" class="link">Read more →</a>
+      </div>
+
+      <div class="card">
+        <div class="flex">
+          <span class="icon-circle purple">
+            👨‍👩‍👧
+          </span>
+          <div>
+            <div class="category">Family Law</div>
+            <h3>Child Custody Basics</h3>
+          </div>
+        </div>
+        <p class="excerpt">An overview of how child custody determinations are made and what factors courts consider.</p>
+        <a href="#" class="link">Read more →</a>
+      </div>
+
+      <div class="card">
+        <div class="flex">
+          <span class="icon-circle yellow">
+            📄
+          </span>
+          <div>
+            <div class="category">Civil Procedure</div>
+            <h3>Small Claims Court Guide</h3>
+          </div>
+        </div>
+        <p class="excerpt">Step-by-step guide to filing and presenting your case in small claims court.</p>
+        <a href="#" class="link">Read more →</a>
+      </div>
+    </div>
+
+    <!-- Resources -->
+    <div class="grid resources">
+      <div class="card text-center">
+        <div class="resource-icon">📘</div>
+        <h3>Legal Guides</h3>
+        <p class="text-sm excerpt">Comprehensive guides on various legal topics written in plain language.</p>
+        <a href="#" class="link">Browse guides →</a>
+      </div>
+
+      <div class="card text-center">
+        <div class="resource-icon">📑</div>
+        <h3>Document Templates</h3>
+        <p class="text-sm excerpt">Access free legal document templates with instructions for common situations.</p>
+        <a href="#" class="link">View templates →</a>
+      </div>
+
+      <div class="card text-center">
+        <div class="resource-icon">💬</div>
+        <h3>Community Forums</h3>
+        <p class="text-sm excerpt">Join discussions with legal experts and community members facing similar issues.</p>
+        <a href="#" class="link">Join forums →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

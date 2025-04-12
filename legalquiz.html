@@ -1,0 +1,231 @@
+<button onclick="location.href='home.html'">← Back to Home</button>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Legal Knowledge Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 768px;
+      margin: 4rem auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-primary {
+      color: #1f2937;
+    }
+
+    .text-secondary {
+      color: #6b7280;
+    }
+
+    .question {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .quiz-option {
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .quiz-option.selected {
+      background-color: #e5e7eb;
+    }
+
+    .quiz-option.correct {
+      border-color: #10b981;
+      background-color: #ecfdf5;
+    }
+
+    .quiz-option.incorrect {
+      border-color: #ef4444;
+      background-color: #fef2f2;
+    }
+
+    .button {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      background-color: #1f2937;
+      color: white;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .button:disabled {
+      background-color: #9ca3af;
+      cursor: not-allowed;
+    }
+
+    .score {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background-color: #e5e7eb;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .progress-bar-inner {
+      height: 100%;
+      background-color: #fbbf24;
+      width: 0;
+      transition: width 0.3s;
+    }
+
+    .icon {
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="text-center">
+      <h2 class="text-primary">Test Your Legal Knowledge</h2>
+      <p class="text-secondary">Challenge yourself with our legal quizzes and improve your understanding of common legal concepts.</p>
+    </div>
+
+    <div id="quiz">
+      <div class="score" style="margin-top: 2rem;">
+        <div><strong>Score:</strong> <span id="score">0</span>/3</div>
+        <div><strong>Question</strong> <span id="qNumber">1</span>/3</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-inner" id="progress"></div>
+      </div>
+
+      <div style="margin-top: 2rem;">
+        <div class="question" id="questionText"></div>
+        <div id="optionsContainer"></div>
+        <button class="button" id="nextBtn" disabled>Next Question</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "In most states, what is the legal term for a written statement made under oath?",
+        options: ["Deposition", "Affidavit", "Testimony", "Declaration"],
+        correctAnswer: 1
+      },
+      {
+        question: "What legal principle states that everyone is entitled to equal protection under the law?",
+        options: ["Double jeopardy", "Due process", "Equal protection", "Habeas corpus"],
+        correctAnswer: 2
+      },
+      {
+        question: "What is the term for a court order requiring a person to appear in court?",
+        options: ["Subpoena", "Warrant", "Indictment", "Summons"],
+        correctAnswer: 0
+      }
+    ];
+
+    let currentQuestion = 0;
+    let selectedOption = null;
+    let score = 0;
+
+    const questionText = document.getElementById("questionText");
+    const optionsContainer = document.getElementById("optionsContainer");
+    const nextBtn = document.getElementById("nextBtn");
+    const progress = document.getElementById("progress");
+    const scoreDisplay = document.getElementById("score");
+    const qNumber = document.getElementById("qNumber");
+
+    function loadQuestion() {
+      const data = quizData[currentQuestion];
+      questionText.textContent = data.question;
+      optionsContainer.innerHTML = "";
+      nextBtn.disabled = true;
+      selectedOption = null;
+
+      data.options.forEach((option, index) => {
+        const div = document.createElement("div");
+        div.className = "quiz-option";
+        div.textContent = option;
+        div.addEventListener("click", () => handleOptionClick(div, index));
+        optionsContainer.appendChild(div);
+      });
+
+      qNumber.textContent = currentQuestion + 1;
+      progress.style.width = `${(currentQuestion / quizData.length) * 100}%`;
+    }
+
+    function handleOptionClick(div, index) {
+      if (selectedOption !== null) return;
+      selectedOption = index;
+
+      const options = optionsContainer.querySelectorAll(".quiz-option");
+      options.forEach(opt => opt.classList.remove("selected"));
+
+      div.classList.add("selected");
+      nextBtn.disabled = false;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      const correct = quizData[currentQuestion].correctAnswer;
+      const options = optionsContainer.querySelectorAll(".quiz-option");
+
+      if (selectedOption === correct) {
+        options[selectedOption].classList.add("correct");
+        score++;
+      } else {
+        options[selectedOption].classList.add("incorrect");
+        options[correct].classList.add("correct");
+      }
+
+      scoreDisplay.textContent = score;
+      nextBtn.disabled = true;
+
+      setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < quizData.length) {
+          loadQuestion();
+        } else {
+          showFinalResult();
+        }
+      }, 1500);
+    });
+
+    function showFinalResult() {
+      questionText.textContent = `🎉 You completed the quiz! Your score: ${score}/${quizData.length}`;
+      optionsContainer.innerHTML = "";
+      nextBtn.style.display = "none";
+      progress.style.width = `100%`;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

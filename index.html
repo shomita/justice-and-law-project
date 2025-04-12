@@ -1,0 +1,173 @@
+<button onclick="location.href='home.html'">← Back to Home</button>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Justice Pathway</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <h1>Justice Pathway</h1>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container">
+          <h2>Empowering Legal Guidance</h2>
+          <p>Your trusted source for legal questions, resources, and quizzes.</p>
+        </div>
+      </section>
+
+      <!-- Ask Question -->
+      <section class="question-form" id="ask-question">
+        <div class="container">
+          <h3>Ask Your Legal Question</h3>
+          <form id="questionForm">
+            <label>
+              Legal Category
+              <select required>
+                <option value="">Select one</option>
+                <option value="family">Family Law</option>
+                <option value="housing">Housing & Property</option>
+                <option value="employment">Employment Law</option>
+              </select>
+            </label>
+            <label>
+              Your Question
+              <textarea required></textarea>
+            </label>
+            <label>
+              Email
+              <input type="email" required />
+            </label>
+            <button type="submit">Submit Question</button>
+          </form>
+          <p id="formStatus" style="display: none;">✅ Question submitted!</p>
+        </div>
+      </section>
+
+      <!-- Knowledge Base -->
+      <section class="knowledge-base">
+        <div class="container">
+          <h3>Knowledge Base</h3>
+          <ul>
+            <li>What is a legal affidavit?</li>
+            <li>Understanding tenant rights</li>
+            <li>Filing a small claims lawsuit</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Legal Quiz -->
+      <section class="quiz" id="quiz">
+        <div class="container">
+          <h3>Legal Quiz</h3>
+          <p>1. What is the legal term for a written statement under oath?</p>
+          <button onclick="selectAnswer(true)">Affidavit</button>
+          <button onclick="selectAnswer(false)">Declaration</button>
+          <p id="quizResult"></p>
+        </div>
+      </section>
+
+      <!-- Contests -->
+      <section class="contests">
+        <div class="container">
+          <h3>Legal Contests</h3>
+          <p>Participate in our monthly case study contests to win rewards!</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>© <span id="year"></span> Justice Pathway. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // JS for current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // JS for form submit
+    document.getElementById("questionForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      document.getElementById("formStatus").style.display = "block";
+      setTimeout(() => {
+        this.reset();
+        document.getElementById("formStatus").style.display = "none";
+      }, 3000);
+    });
+
+    // JS for quiz interaction
+    function selectAnswer(correct) {
+      const result = document.getElementById("quizResult");
+      if (correct) {
+        result.textContent = "✅ Correct!";
+      } else {
+        result.textContent = "❌ Incorrect. Try again!";
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9fafb;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 1.5rem;
+    }
+    header, footer {
+      background: #1f2937;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    section {
+      margin: 2rem 0;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+    }
+    h1, h2, h3 {
+      margin-bottom: 1rem;
+    }
+    form label {
+      display: block;
+      margin-bottom: 1rem;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      background: #1f2937;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .quiz button {
+      margin: 0.5rem;
+    }
+  </style>
+</body>
+</html>

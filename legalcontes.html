@@ -1,0 +1,217 @@
+<button onclick="location.href='home.html'">← Back to Home</button>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Legal Contests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #ffffff, #f3f4f6);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      text-align: center;
+      color: #1f2937;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #6b7280;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: #4b5563;
+      font-size: 0.9rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 9999px;
+      background-color: #fbbf24;
+      color: #1f2937;
+      display: inline-block;
+    }
+
+    .badge-outline {
+      border: 1px solid #d1d5db;
+      color: #6b7280;
+      background-color: #f9fafb;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-top: 0.75rem;
+    }
+
+    .info-row span {
+      margin-left: 0.5rem;
+    }
+
+    .btn-outline {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 0.95rem;
+      background: white;
+      border: 2px solid #1f2937;
+      color: #1f2937;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1.5rem;
+      border-radius: 4px;
+    }
+
+    .btn-outline:hover {
+      background-color: #1f2937;
+      color: white;
+    }
+
+    .btn-primary {
+      background-color: #1f2937;
+      color: white;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 3rem;
+      transition: background 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #fbbf24;
+      color: #1f2937;
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <section id="contests">
+    <div class="container">
+      <h2>Legal Contests & Competitions</h2>
+      <p class="subtitle">Showcase your legal knowledge, win prizes, and boost your resume with our engaging contests.</p>
+
+      <div class="grid" id="contestGrid">
+        <!-- Cards injected by JS -->
+      </div>
+
+      <div class="text-center" style="text-align: center;">
+        <button class="btn-primary">View All Competitions</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const contests = [
+      {
+        title: "Constitutional Law Challenge",
+        description: "Test your knowledge of constitutional principles and landmark Supreme Court cases.",
+        date: "May 15, 2025",
+        participants: 128,
+        status: "upcoming",
+        prize: "$500 Scholarship"
+      },
+      {
+        title: "Mock Trial Competition",
+        description: "Participate in a simulated court case and practice your advocacy skills.",
+        date: "June 2, 2025",
+        participants: 64,
+        status: "upcoming",
+        prize: "Internship Opportunity"
+      },
+      {
+        title: "Legal Essay Contest",
+        description: "Write an essay on modern legal challenges and potential solutions.",
+        date: "July 10, 2025",
+        participants: 97,
+        status: "registration",
+        prize: "Publication Opportunity"
+      }
+    ];
+
+    const grid = document.getElementById("contestGrid");
+
+    contests.forEach(contest => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <div>
+          <div class="header-row">
+            <h3>${contest.title}</h3>
+            <span class="badge ${contest.status === 'upcoming' ? 'badge-outline' : ''}">
+              ${contest.status === 'registration' ? 'Registration Open' : 'Upcoming'}
+            </span>
+          </div>
+          <p>${contest.description}</p>
+
+          <div class="info-row">📅<span>${contest.date}</span></div>
+          <div class="info-row">👥<span>${contest.participants} participants</span></div>
+          <div class="info-row">🏆<span>${contest.prize}</span></div>
+        </div>
+        <button class="btn-outline">View Details →</button>
+      `;
+
+      grid.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>

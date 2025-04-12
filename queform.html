@@ -1,0 +1,189 @@
+<button onclick="location.href='home.html'">← Back to Home</button>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Legal Question Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f5f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 768px;
+      margin: 4rem auto;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #1F2937;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #6B7280;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    select, textarea, input[type="email"] {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      margin-top: 0.25rem;
+      font-size: 1rem;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      width: 100%;
+      background-color: #1F2937;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 0.375rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #374151;
+    }
+
+    .footer-note {
+      font-size: 0.75rem;
+      color: #6B7280;
+      text-align: center;
+      border-top: 1px solid #e5e7eb;
+      margin-top: 2rem;
+      padding-top: 1rem;
+    }
+
+    .success {
+      background-color: #dcfce7;
+      color: #065f46;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      text-align: center;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .error {
+      color: #dc2626;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Ask Your Legal Question</h2>
+    <p class="subtitle">Describe your situation, and our legal experts will provide guidance to help you understand your options.</p>
+
+    <form id="questionForm">
+      <label for="category">Legal Category</label>
+      <select id="category" required>
+        <option value="">Select a category</option>
+        <option value="family">Family Law</option>
+        <option value="housing">Housing & Property</option>
+        <option value="employment">Employment Law</option>
+        <option value="immigration">Immigration</option>
+        <option value="criminal">Criminal Defense</option>
+        <option value="consumer">Consumer Rights</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="question">Your Question</label>
+      <textarea id="question" rows="6" placeholder="Please describe your situation in detail..." required></textarea>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="youremail@example.com" required>
+      <p class="error" id="errorMsg" style="display:none;">Please fill all fields correctly.</p>
+
+      <button type="submit" class="btn" id="submitBtn">
+        <span id="btnIcon">📨</span> <span id="btnText">Submit Question</span>
+      </button>
+
+      <div class="success" id="successMsg">✅ Your question has been submitted successfully!</div>
+    </form>
+
+    <div class="footer-note">
+      By submitting, you agree to our Terms of Service and Privacy Policy.
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('questionForm');
+    const category = document.getElementById('category');
+    const question = document.getElementById('question');
+    const email = document.getElementById('email');
+    const btn = document.getElementById('submitBtn');
+    const btnIcon = document.getElementById('btnIcon');
+    const btnText = document.getElementById('btnText');
+    const errorMsg = document.getElementById('errorMsg');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      if (!category.value || !question.value.trim() || !email.value.trim()) {
+        errorMsg.style.display = 'block';
+        return;
+      }
+
+      errorMsg.style.display = 'none';
+
+      console.log({
+        category: category.value,
+        question: question.value,
+        email: email.value
+      });
+
+      btn.disabled = true;
+      btnIcon.textContent = '✅';
+      btnText.textContent = 'Question Submitted';
+
+      successMsg.style.display = 'block';
+
+      setTimeout(() => {
+        form.reset();
+        btn.disabled = false;
+        btnIcon.textContent = '📨';
+        btnText.textContent = 'Submit Question';
+        successMsg.style.display = 'none';
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
